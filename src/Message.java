@@ -17,7 +17,6 @@ public class Message {
         if (!(r % 2 == 0))
             r++;
         }
-
         return r;
     }
     public int determineWidthMsg(){
@@ -25,7 +24,6 @@ public class Message {
         int r = 0;
         if(m != null && !m.isEmpty()){
             return message.size();
-            
         }
         return r;
     }
@@ -35,28 +33,33 @@ public class Message {
     }
 
    
-    
+    //█ ▌ ▍ ▋ ▄ ▌ ▐
+    // https://unicode-table.com/en/
+
     public void frame(){
         int len = determineLongestMsg() + 2;
-        int limit = 0;
-        String luc, b, hb, ruc, ldc, rdc, sp;
-        hb = "="; //header body 
-        b = "*"; // body
-        luc = "*"; // left upper corner
-        ruc = "*"; // right upper corner
-        ldc = "*"; // left bottom corner
-        rdc = "*"; // right bottom corner
+        int limit = 0;      
+
+        String luc, lb, rb, hb, ruc, ldc, rdc, sp, ht;
+        ht = "▀"; //header body 
+        hb = "▄";
+        lb = "▌"; // body
+        rb = "▐";
+        luc = "▛"; // left upper corner
+        ruc = "▜"; // right upper corner
+        ldc = "▙"; // left bottom corner
+        rdc = "▟"; // right bottom corner
         sp = " "; // simple space
         //draw top
         System.out.print(luc);
         for(int i= 0; i < len; i++)
-            System.out.print(hb);
+            System.out.print(ht);
         System.out.print(ruc);
         System.out.println("");
 
         //draw n bodies
         for(String i : message){
-            System.out.print(b);
+            System.out.print(lb);
             limit = (len - i.length())/2;
             for(int s = 0; s < limit; s++)
             {
@@ -69,7 +72,7 @@ public class Message {
             {
                 System.out.print(sp);
             }    
-            System.out.println(b);
+            System.out.println(rb);
         }
 
         //draw bottom
@@ -92,18 +95,10 @@ public class Message {
 
     public static void main(String[] args){
         Message msg = new Message("Test");
-        msg.addMsg("Prueba de longitud de un mensaje aun mas largo");
-        msg.addMsg("Other Message");
-        msg.addMsg("The last message of the test");
+        msg.addMsg("Test1");
         
         System.out.println(msg.toString());
-        msg.frame();
-        
-        
-        
-
-        
-    
+        msg.frame();    
     }
 
     
